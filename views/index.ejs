@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Backend Mini Project 1</title>
+</head>
+
+<body>
+
+  <body class="bg-slate-200 max-w-5xl mx-auto">
+
+    <!-- Bredcumber Section -->
+    <div class="tasks bg-white my-3 py-2 px-4 shadow-lg max-w-4xl grid grid-cols-5 gap-3 mx-auto mt-4 flex">
+      <a href="/viewuser" class="text-blue-600 font-semibold">See Users -></a>
+    </div>
+
+    <!-- Form Input section -->
+    <form action="/create" method="post" class="my-1 max-w-4xl mx-auto bg-white py-3 px-4 shadow-lg">
+      <div class="mb-5">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+        <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Ex: John Doe" required />
+      </div>
+      <div class="mb-5">
+        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User ID</label>
+        <input type="text" name="username" placeholder="john17@doe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+      </div>
+      <div class="mb-5">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+        <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com" required />
+      </div>
+      <div class="mb-5">
+        <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profile Image URL</label>
+        <input type="url" name="url" placeholder="https://john@doe.com" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+      </div>
+
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+    </form>
+    <!-- Form Input section End -->
+
+    <script src="/javascripts/script.js"></script>
+  </body>
+
+</html>

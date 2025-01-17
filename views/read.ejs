@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Backend Mini Project 1</title>
+</head>
+
+
+<body class="bg-slate-200 mx-auto">
+  <div class="w-full container mx-auto m-1 p-1"></div>
+
+  <!-- Bredcumber Section -->
+  <div class="tasks bg-white my-3 py-2 px-4 shadow-lg max-w-7xl grid grid-cols-5 gap-3 mx-auto mt-4 flex">
+    <a href="/" class="text-blue-600 font-semibold">
+      <- Home</a>
+  </div>
+
+  <!-- Form Input section -->
+  <div class="my-1 max-w-7xl mx-auto bg-white py-3 px-4 shadow-lg">
+    <h2 class="text-2xl text-center font-semibold py-2">All Users Details</h2>
+    <!-- UserDetails -->
+
+    <div class="py-2 grid grid-cols-4 gap-5 px-1">
+      <% if(users.length>0){ %>
+      <!-- Users -->
+      <% users.forEach(user => { %>
+
+      <div class="bg-gray-100 my-1 py-3 px-2 flex flex-col flex-wrap gap-2 shadow-xl">
+        <img class="h-60 rounded w-full object-cover object-center my-2 rounded-full hover:scale-95 duration-200" src="<%= user.imgurl %>" alt="content">
+        <div class="flex flex-col -gap-2">
+          <h3 class="tracking-widest text-gray-950 text-xl font-semibold title-font px-2"> <%= user.name %></h3>
+          <h2 class="text-xs text-gray-700 font-medium title-font px-2"><%= user.username %></h2>
+          <h1 class="leading-relaxed text-sm text-indigo-500 font-medium mb-4 px-2"><%= user.email %></h1>
+        </div>
+        <div class="flex justify-around px-2">
+          <button onclick="deleteUser('<%= user._id %>');" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete Profile</button>
+          <a href="/update/<%= user._id%>" class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Edit Profile</a>
+        </div>
+      </div>
+
+
+      <% }); %>
+
+      <!-- Users End -->
+
+      <% }else{ %>
+      <h2 class="text-xl font-semibold py-2">No User Available</h2>
+      <% } %>
+    </div>
+    <!-- UserDetails End -->
+
+    <!-- Main modal -->
+    <div id="modal" class="hidden">
+      <div id="overlay" class="bg-black opacity-70 fixed inset-0 z-40"></div>
+      <!-- Modal -->
+      <div id="deleteConfirmation" tabindex="-1" aria-hidden="true" class="h-screen flex justify-center items-center fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4">
+              <p class="text-xl text-center">Are You sure to delete your account ?</p>
+            </div>
+            <!-- Modal footer -->
+            <div class="flex gap-3 justify-center items-center p-2 border-gray-200 w-full">
+              <a href="/viewuser" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Cancel</a>
+              <a id="deleteLink" href="#" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Yes Sure</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main modal End -->
+
+    <script src="/javascripts/script.js"></script>
+    <script>
+      function deleteUser(id) {
+        console.log(` ${id } DELETED `);
+        const deleteLink = document.getElementById('deleteLink') ;
+        const modalId = document.getElementById('modal');
+        modalId.classList.remove('hidden');
+        let str = `/delete/` + id ;
+        console.log(str);
+        deleteLink.href = str ;
+      }
+    </script>
+
+</body>
+
+</html>
